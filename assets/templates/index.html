@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% from 'bootstrap/form.html' import render_form %}
+{% from 'bootstrap/utils.html' import render_messages %}
+{% from 'bootstrap/pagination.html' import render_pagination %}
+
+{% block main %}
+    <div class="container">
+        <h1 class="text-primary">LIVRE D'OR</h1>
+
+        <div class="formulaire mb-4 mt-4">
+            <form hx-post="{{ url_for('index') }}" hx-target="body">
+                {{ render_form(form) }}
+            </form>
+        </div>
+
+        {{ render_messages(dismissible=true) }}
+
+        <div class="row mt-4">
+            <div class="col-lg-6">
+                <h4>Nous avons {{ posts.count() }} messages</h4>
+            </div>
+
+            <div class="col-lg-6 text-lg-right">
+                <h4>Page {{ pages.page }} sur {{ pages.pages }}</h4>
+            </div>
+        </div>
+        <hr>
+
+        <div class="messages">
+            {% for post in pages.items %}
+                <strong>{{ post.name }}</strong> a écrit:
+                <p>{{ post.corps }}</p>
+                <p>---</p>
+            {% endfor %}
+        </div>
+
+        {{ render_pagination(pages) }}
+    </div>
+
+    <style>
+        .container{
+            max-width: 900px;
+        }
+        label{
+            text-transform: uppercase;
+        }
+    </style>
+{% endblock %}
+
+

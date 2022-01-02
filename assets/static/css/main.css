@@ -1,0 +1,14 @@
+#corps {
+    height: 200px;
+}
+
+h1{
+    margin-top: 30px;
+    font-weight: bold;
+    font-size: 60px;
+}
+
+#submit {
+    padding: 12px 30px;
+    font-weight: bold;
+}

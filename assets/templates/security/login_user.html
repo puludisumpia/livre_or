@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% from 'bootstrap/form.html' import render_field %}
+
+
+
+{% block main %}
+  <div class="container">
+    <h1>Connexion</h1>
+
+    <form action="{{ url_for_security('login') }}" method="POST" name="login_user_form">
+      {{ login_user_form.hidden_tag() }}
+      {{ render_field(login_user_form.email) }}
+      {{ render_field(login_user_form.password) }}
+      {{ render_field(login_user_form.remember) }}
+      {{ render_field(login_user_form.next) }}
+      {{ render_field(login_user_form.submit) }}
+    </form>
+  </div>
+
+
+  <style>
+    .container{
+      max-width: 500px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      padding: 20px;
+      margin-top: 30px;
+    }
+    h1{
+      text-align: center;
+      margin-top: 0;
+    }
+  </style>
+{% endblock %}
+
